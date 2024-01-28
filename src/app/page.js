@@ -59,7 +59,7 @@ export default function Home() {
 
   return (
     <div className="bg_wrapper pt-3">
-      <div className='d-flex justify-content-center'>
+      <div className='d-flex justify-content-center mb-2'>
         <h4>Money Transaction App</h4>
       </div>
       <div className="container iner_wrapper">
