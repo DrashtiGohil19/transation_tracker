@@ -169,36 +169,38 @@ export default function Home() {
               </Row>
             </Form>
 
-            <Table striped bordered hover className='mt-3 border-dark text-center'>
-              <thead>
-                <tr>
-                  <th>Index</th>
-                  <th>Date</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                  <th colSpan={2}>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  data.givenMoneyData?.map((item, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{new Date(item.date).toLocaleDateString('en-GB')}</td>
-                      <td>{item.description}</td>
-                      <td>{item.amount}</td>
-                      <td onClick={() => { setEditing(true); setEditItemId(item._id); getDataById(item._id) }}><i className='fs-5 text-success'><MdModeEdit /></i></td>
-                      <td onClick={() => handleShow(item._id)}><i className='fs-5 text-danger'><MdDelete /></i></td>
-                    </tr>
-                  ))
-                }
-                <tr>
-                  <th colSpan={3}>Total Amount</th>
-                  <th>{data.totalgivenMoney}</th>
-                  <td colSpan={2}></td>
-                </tr>
-              </tbody>
-            </Table>
+            <div className='table-responsive'>
+              <Table striped bordered hover className='mt-3 border-dark text-center'>
+                <thead>
+                  <tr>
+                    <th>Index</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th colSpan={2}>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    data.givenMoneyData?.map((item, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{new Date(item.date).toLocaleDateString('en-GB')}</td>
+                        <td>{item.description}</td>
+                        <td>{item.amount}</td>
+                        <td onClick={() => { setEditing(true); setEditItemId(item._id); getDataById(item._id) }}><i className='fs-5 text-success'><MdModeEdit /></i></td>
+                        <td onClick={() => handleShow(item._id)}><i className='fs-5 text-danger'><MdDelete /></i></td>
+                      </tr>
+                    ))
+                  }
+                  <tr>
+                    <th colSpan={3}>Total Amount</th>
+                    <th>{data.totalgivenMoney}</th>
+                    <td colSpan={2}></td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
           </Tab>
 
           <Tab eventKey="profile" title="Income">
@@ -237,42 +239,44 @@ export default function Home() {
               </Row>
             </Form>
 
-            <Table striped bordered hover className='mt-3 border-dark text-center'>
-              <thead>
-                <tr>
-                  <th>Index</th>
-                  <th>Date</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                  <th colSpan={2}>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  data.receivedMoneyData?.map((item, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{new Date(item.date).toLocaleDateString('en-GB')}</td>
-                      <td>{item.description}</td>
-                      <td>{item.amount}</td>
-                      <td onClick={() => { setEditing(true); setEditItemId(item._id); getDataById(item._id) }}><i className='fs-5 text-success'><MdModeEdit /></i></td>
-                      <td onClick={() => handleShow(item._id)}><i className='fs-5 text-danger'><MdDelete /></i></td>
-                    </tr>
-                  ))
-                }
-                <tr>
-                  <th colSpan={3}>Total Amount</th>
-                  <th>{data.totalreceivedMoney}</th>
-                  <td colSpan={2}></td>
-                </tr>
-              </tbody>
-            </Table>
+            <div className="table-responsive">
+              <Table striped bordered hover className='mt-3 border-dark text-center'>
+                <thead>
+                  <tr>
+                    <th>Index</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th colSpan={2}>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    data.receivedMoneyData?.map((item, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{new Date(item.date).toLocaleDateString('en-GB')}</td>
+                        <td>{item.description}</td>
+                        <td>{item.amount}</td>
+                        <td onClick={() => { setEditing(true); setEditItemId(item._id); getDataById(item._id) }}><i className='fs-5 text-success'><MdModeEdit /></i></td>
+                        <td onClick={() => handleShow(item._id)}><i className='fs-5 text-danger'><MdDelete /></i></td>
+                      </tr>
+                    ))
+                  }
+                  <tr>
+                    <th colSpan={3}>Total Amount</th>
+                    <th>{data.totalreceivedMoney}</th>
+                    <td colSpan={2}></td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
           </Tab>
         </Tabs>
 
       </div>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this data ?</Modal.Body>
@@ -285,6 +289,6 @@ export default function Home() {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </div >
   );
 }
